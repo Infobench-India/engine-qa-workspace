@@ -1,0 +1,78 @@
+{
+  "name": "engine-qa-desktop-app",
+  "sourceRoot": "apps/engine-qa-desktop-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx-electron:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/engine-qa-desktop-app",
+        "main": "apps/engine-qa-desktop-app/src/main.ts",
+        "tsConfig": "apps/engine-qa-desktop-app/tsconfig.app.json",
+        "assets": [
+          "apps/engine-qa-desktop-app/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/engine-qa-desktop-app/src/environments/environment.ts",
+              "with": "apps/engine-qa-desktop-app/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx-electron:execute",
+      "options": {
+        "buildTarget": "engine-qa-desktop-app:build"
+      }
+    },
+    "package": {
+      "executor": "nx-electron:package",
+      "options": {
+        "name": "engine-qa-desktop-app",
+        "frontendProject": "engine-qa-app",
+        "outputPath": "dist/packages",
+        "prepackageOnly": true
+      }
+    },
+    "make": {
+      "executor": "nx-electron:make",
+      "options": {
+        "name": "engine-qa-desktop-app",
+        "frontendProject": "engine-qa-app",
+        "outputPath": "dist/executables"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/engine-qa-desktop-app/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/engine-qa-desktop-app"
+      ],
+      "options": {
+        "jestConfig": "apps/engine-qa-desktop-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

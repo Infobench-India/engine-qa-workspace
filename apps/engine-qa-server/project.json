@@ -6,14 +6,18 @@
   "targets": {
     "build": {
       "executor": "@nrwl/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/engine-qa-server",
         "main": "apps/engine-qa-server/src/main.ts",
         "tsConfig": "apps/engine-qa-server/tsconfig.app.json",
-        "assets": ["apps/engine-qa-server/src/assets"]
+        "assets": [
+          "apps/engine-qa-server/src/assets"
+        ]
       },
       "configurations": {
         "production": {
@@ -42,14 +46,20 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/engine-qa-server/**/*.ts"]
+        "lintFilePatterns": [
+          "apps/engine-qa-server/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/engine-qa-server/jest.config.ts",
         "passWithNoTests": true

@@ -17,7 +17,7 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-
+import AutocompleteControlled from '../components/autocomplete-multiselect/autocomplete-multiselect';
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
@@ -33,7 +33,7 @@ export default function DashboardAppPage() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
         </Typography>
-
+        <AutocompleteControlled></AutocompleteControlled>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary
